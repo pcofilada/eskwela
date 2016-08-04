@@ -1,0 +1,19 @@
+h2 Listing levels
+
+table.table
+  thead
+    tr
+      th Name
+      th
+  tbody
+    = for level <- @levels do
+      tr
+        td= level.name
+        td class="text-right"
+          = link "Show", to: level_path(@conn, :show, level), class: "btn btn-default btn-xs"
+          | &nbsp;
+          = link "Edit", to: level_path(@conn, :edit, level), class: "btn btn-default btn-xs"
+          | &nbsp;
+          = link "Delete", to: level_path(@conn, :delete, level), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
+
+= link "New level", to: level_path(@conn, :new)

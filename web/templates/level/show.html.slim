@@ -1,0 +1,10 @@
+h2 Show level
+
+ul
+  li
+    strong Name:&nbsp;
+    = @level.name
+
+= link "Edit", to: level_path(@conn, :edit, @level)
+| &nbsp;
+= link "Back", to: level_path(@conn, :index)

@@ -1,0 +1,5 @@
+h2 New level
+
+= render "form.html", changeset: @changeset, action: level_path(@conn, :create)
+
+= link "Back", to: level_path(@conn, :index)
