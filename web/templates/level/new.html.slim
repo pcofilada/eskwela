@@ -1,5 +1,8 @@
-h2 New level
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 New level
+      .ibox-content
+        = render "form.html", changeset: @changeset, conn: @conn, action: level_path(@conn, :create)
 
-= render "form.html", changeset: @changeset, action: level_path(@conn, :create)
-
-= link "Back", to: level_path(@conn, :index)

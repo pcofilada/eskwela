@@ -1,19 +1,22 @@
-h2 Listing levels
-
-table.table
-  thead
-    tr
-      th Name
-      th
-  tbody
-    = for level <- @levels do
-      tr
-        td= level.name
-        td class="text-right"
-          = link "Show", to: level_path(@conn, :show, level), class: "btn btn-default btn-xs"
-          | &nbsp;
-          = link "Edit", to: level_path(@conn, :edit, level), class: "btn btn-default btn-xs"
-          | &nbsp;
-          = link "Delete", to: level_path(@conn, :delete, level), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
-
-= link "New level", to: level_path(@conn, :new)
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 Level List
+        .ibox-tools
+          = link "New level", to: level_path(@conn, :new), class: "btn btn-primary btn-sm"
+      .ibox-content
+        table.table
+          thead
+            tr
+              th Name
+              th
+          tbody
+            = for level <- @levels do
+              tr
+                td= level.name
+                td.actions.text-right
+                  = link "Manage", to: level_path(@conn, :show, level), class: "btn btn-success btn-xs"
+                  = link "Edit", to: level_path(@conn, :edit, level), class: "btn btn-info btn-xs"
+                  = form_for @conn, level_path(@conn, :delete, level), [method: :delete, as: :delete], fn f ->
+                    = submit "Delete", class: "btn btn-danger btn-xs"

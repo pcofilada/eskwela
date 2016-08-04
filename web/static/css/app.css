@@ -1,1 +1,97 @@
 /* This file is for your main application css. */
+body {
+  background: #f3f3f4;
+  margin: 0px;
+}
+
+table {
+  margin-top: 0px;
+}
+
+.actions .btn {
+  margin-left: 5px;
+}
+
+.actions > form {
+  display: inline;
+}
+
+.clearfix > .btn:first-child {
+  width: 47%;
+}
+
+.clearfix > .btn:first-child {
+  float: left;
+}
+
+.clearfix > .btn:last-child {
+  float: right;
+}
+
+.hr-line-dashed {
+  border-top: 1px dashed #e7eaec;
+  color: #ffffff;
+  background-color: #ffffff;
+  height: 1px;
+  margin: 20px 0;
+}
+
+span.help-block {
+  color: #ed5565;
+}
+
+.ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.ibox > .ibox-title {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #ffffff;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 3px 0 0;
+  color: inherit;
+  margin-bottom: 0;
+  padding: 14px 15px 7px;
+  min-height: 48px;
+}
+
+.ibox > .ibox-title > h4 {
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 0 7px;
+  padding: 0;
+  text-overflow: ellipsis;
+  float: left;
+}
+
+.ibox > .ibox-title > .ibox-tools {
+  display: block;
+  float: none;
+  margin-top: 0;
+  position: relative;
+  padding: 0;
+  text-align: right;
+}
+
+.ibox > .ibox-title > .ibox-tools > .btn {
+  margin-left: 5px;
+}
+
+.ibox > .ibox-content {
+  clear: both;
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}

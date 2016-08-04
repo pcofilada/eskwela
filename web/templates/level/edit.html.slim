@@ -1,5 +1,9 @@
-h2 Edit level
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 Edit level
+          small= " #{@level.name}"
+      .ibox-content
+        = render "form.html", changeset: @changeset, conn: @conn, action: level_path(@conn, :update, @level)
 
-= render "form.html", changeset: @changeset, action: level_path(@conn, :update, @level)
-
-= link "Back", to: level_path(@conn, :index)
