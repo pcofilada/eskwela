@@ -3,9 +3,26 @@
     .ibox
       .ibox-title
         h4= @level.name
-          small Level
+          small= " Level"
         .ibox-tools
           = link "Edit", to: level_path(@conn, :edit, @level), class: "btn btn-info btn-sm"
           = link "Back", to: level_path(@conn, :index), class: "btn btn-primary btn-sm"
       .ibox-content
         h5 Subject List
+        table.table
+          thead
+            tr
+              th Name
+              th
+          tbody
+            = for subject <- @level.subjects do
+              tr
+                td= subject.name
+                td.actions.text-right
+                  = link "Edit", to: level_subject_path(@conn, :edit, @level, subject), class: "btn btn-info btn-xs"
+                  = form_for @conn, level_subject_path(@conn, :delete, @level, subject), [method: :delete, as: :delete], fn f ->
+                    = submit "Delete", class: "btn btn-danger btn-xs"
+        .row
+          .col-lg-12
+            .hr-line-dashed
+            = link "Add Subject", to: level_subject_path(@conn, :new, @level), class: "btn btn-primary btn-sm col-xs-12"

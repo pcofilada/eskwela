@@ -1,0 +1,8 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 Edit Subject
+          small= " #{@subject.name}"
+      .ibox-content
+        = render "form.html", changeset: @changeset, conn: @conn, level: @level, action: level_subject_path(@conn, :update, @level, @subject)

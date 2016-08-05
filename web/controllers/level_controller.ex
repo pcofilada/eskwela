@@ -28,6 +28,8 @@ defmodule Eskwela.LevelController do
 
   def show(conn, %{"id" => id}) do
     level = Repo.get!(Level, id)
+    |> Repo.preload([:subjects])
+
     render(conn, "show.html", level: level)
   end
 

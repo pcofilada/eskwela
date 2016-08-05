@@ -1,9 +1,9 @@
-defmodule Eskwela.Level do
+defmodule Eskwela.Subject do
   use Eskwela.Web, :model
 
-  schema "levels" do
+  schema "subjects" do
     field :name, :string
-    has_many :subjects, Eskwela.Subject
+    belongs_to :level, Eskwela.Level
 
     timestamps()
   end
