@@ -4,6 +4,7 @@ defmodule Eskwela.Subject do
   schema "subjects" do
     field :name, :string
     belongs_to :level, Eskwela.Level
+    has_many :questions, Eskwela.Question
 
     timestamps()
   end

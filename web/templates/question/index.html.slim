@@ -1,0 +1,26 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 Question List
+        .ibox-tools
+          = link "New question", to: question_path(@conn, :new), class: "btn btn-primary btn-sm"
+      .ibox-content
+        table.table
+          thead
+            tr
+              th Question
+              th Level
+              th Subject
+              th
+          tbody
+            = for question <- @questions do
+              tr
+                td= question.item
+                td= question.subject.level.name
+                td= question.subject.name
+                td.actions.text-right
+                  = link "Manage", to: question_path(@conn, :show, question), class: "btn btn-success btn-xs"
+                  = link "Edit", to: question_path(@conn, :edit, question), class: "btn btn-info btn-xs"
+                  = form_for @conn, question_path(@conn, :delete, question), [method: :delete, as: :delete], fn f ->
+                    = submit "Delete", class: "btn btn-danger btn-xs"

@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 New Question
+      .ibox-content
+        = render "form.html", changeset: @changeset, levels: @levels, conn: @conn, action: question_path(@conn, :create)

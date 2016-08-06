@@ -20,6 +20,7 @@ defmodule Eskwela.Router do
     resources "/levels", LevelController do
       resources "/subjects", SubjectController, except: [:index, :show]
     end
+    resources "/questions", QuestionController
   end
 
   # Other scopes may use custom stacks.
