@@ -20,9 +20,8 @@ html lang="en"
               span.icon-bar
               span.icon-bar
             = link "ESKWELA", to: "/", class: "navbar-brand"
-    p.alert.alert-info role="alert"= get_flash(@conn, :info)
-    p.alert.alert-danger role="alert"= get_flash(@conn, :error)
-
     main role="main"
       .container-fluid
+        p.alert.alert-info role="alert"= get_flash(@conn, :info)
+        p.alert.alert-danger role="alert"= get_flash(@conn, :error)
         = render @view_module, @view_template, assigns
