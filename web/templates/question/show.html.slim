@@ -17,3 +17,25 @@
           label Question:
           span " #{@question.item}"
         h5 Choices
+        table.table
+          thead
+            tr
+              th Answer
+              th
+          tbody
+            = for choice <- @question.choices do
+              tr
+                td= choice.item
+                td.actions.text-right
+                  = if choice.correct_answer do
+                    = link "Correct Answer", to: "#", class: "btn btn-success btn-xs", disabled: "disabled"
+                  - else
+                    = form_for @conn, question_choice_set_answer_path(@conn, :set_answer, @question, choice), [method: :patch, as: :patch], fn f ->
+                      = submit "Set as Answer", class: "btn btn-success btn-xs"
+                  = link "Edit", to: question_choice_path(@conn, :edit, @question, choice), class: "btn btn-info btn-xs"
+                  = form_for @conn, question_choice_path(@conn, :delete, @question, choice), [method: :delete, as: :delete], fn f ->
+                    = submit "Delete", class: "btn btn-danger btn-xs"
+        .row
+          .col-lg-12
+            .hr-line-dashed
+            = link "Add Choice", to: question_choice_path(@conn, :new, @question), class: "btn btn-primary btn-sm col-xs-12"

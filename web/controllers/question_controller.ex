@@ -31,6 +31,7 @@ defmodule Eskwela.QuestionController do
 
   def show(conn, %{"id" => id}) do
     question = Repo.get!(Question, id)
+    |> Repo.preload(:choices)
     |> Repo.preload([subject: :level])
     render(conn, "show.html", question: question)
   end

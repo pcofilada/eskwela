@@ -4,6 +4,7 @@ defmodule Eskwela.Question do
   schema "questions" do
     field :item, :string
     belongs_to :subject, Eskwela.Subject
+    has_many :choices, Eskwela.Choice
 
     timestamps()
   end

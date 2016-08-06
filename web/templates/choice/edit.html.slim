@@ -1,0 +1,7 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 Edit Choice
+      .ibox-content
+        = render "form.html", changeset: @changeset, conn: @conn, question: @question, action: question_choice_path(@conn, :update, @question, @choice)
