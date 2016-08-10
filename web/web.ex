@@ -36,6 +36,9 @@ defmodule Eskwela.Web do
 
       import Eskwela.Router.Helpers
       import Eskwela.Gettext
+
+      # Custom Plugs
+      import Eskwela.Auth
     end
   end
 

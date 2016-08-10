@@ -7,6 +7,8 @@ defmodule Eskwela.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+
+    plug Eskwela.Auth
   end
 
   pipeline :api do
@@ -26,6 +28,12 @@ defmodule Eskwela.Router do
       end
     end
     resources "/choices", ChoiceController
+
+    get "/sign_up", RegistrationController, :new
+    post "/sign_up", RegistrationController, :create
+    get "/sign_in", SessionController, :new
+    post "/sign_in", SessionController, :create
+    delete "/sign_out", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.
