@@ -1,0 +1,22 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 "#{@subject.name}"
+          small " Quiz ##{@quiz.id}"
+        .ibox-tools
+          = link "Back", to: quiz_path(@conn, :show, @quiz), class: "btn btn-primary btn-sm"
+      .ibox-content
+        h5 Questions
+        .questions
+          = for quiz_question <- @quiz_questions do
+            .question
+              .item
+                h4= quiz_question.question.item
+              .corret-answer
+                label Correct Answer:
+                span= correct_answer(quiz_question.question)
+              .user-choice
+                label Your Answer:
+                span= user_choice(quiz_question.user_choice)
+            .hr-line-dashed

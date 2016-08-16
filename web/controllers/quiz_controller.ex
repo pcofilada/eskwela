@@ -1,4 +1,3 @@
-require IEx
 defmodule Eskwela.QuizController do
   use Eskwela.Web, :controller
 
@@ -96,6 +95,19 @@ defmodule Eskwela.QuizController do
           |> redirect(to: quiz_path(conn, :show, quiz))
       end
     end
+  end
+
+  def preview(conn, %{"quiz_id" => quiz_id, "id" => id}) do
+    quiz = Repo.get!(Quiz, quiz_id)
+    |> Repo.preload(:quiz_questions)
+    subject = Repo.get!(Subject, id)
+    quiz_questions = QuizQuestion
+    |> where([q], q.quiz_id == ^quiz_id)
+    |> where([q], q.subject_id == ^id)
+    |> Repo.all
+    |> Repo.preload(question: :choices)
+
+    render(conn, "preview.html", quiz: quiz, subject: subject, quiz_questions: quiz_questions)
   end
 
   defp create_quiz_questions(quiz) do
