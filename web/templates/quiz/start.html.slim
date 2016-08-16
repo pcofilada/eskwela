@@ -1,0 +1,24 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 "#{@subject.name}"
+          small " Quiz ##{@quiz.id}"
+        .ibox-tools
+          = link "Back", to: quiz_path(@conn, :show, @quiz), class: "btn btn-primary btn-sm"
+      .ibox-content
+        h5 Questions
+        .questions
+          = form_for @changeset, quiz_submit_path(@conn, :submit, @quiz, @subject), [method: :patch], fn f ->
+            = for quiz_question <- @quiz_questions do
+              .question
+                .item
+                  h5= quiz_question.question.item
+                .form-group.choices
+                  = for choice <- Enum.shuffle(quiz_question.question.choices) do
+                    .choice
+                      = radio_button f, :choice, choice.id, name: "quiz_question[#{quiz_question.id}][choice]"
+                      = label f, :choice, choice.item, for: "quiz_question_choice_#{choice.id}"
+              .hr-line-dashed
+            .form-group.row
+              = submit "Submit", class: "btn btn-success col-xs-12"

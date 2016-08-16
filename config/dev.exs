@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :eskwela, Eskwela.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "AgentP",
+  password: "password",
   database: "eskwela_dev",
   hostname: "localhost",
   pool_size: 10

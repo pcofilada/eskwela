@@ -5,6 +5,7 @@ defmodule Eskwela.Question do
     field :item, :string
     belongs_to :subject, Eskwela.Subject
     has_many :choices, Eskwela.Choice
+    has_many :quiz_questions, Eskwela.QuizQuestion
 
     timestamps()
   end

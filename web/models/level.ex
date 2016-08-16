@@ -4,6 +4,7 @@ defmodule Eskwela.Level do
   schema "levels" do
     field :name, :string
     has_many :subjects, Eskwela.Subject
+    has_many :quizzes, Eskwela.Quiz
 
     timestamps()
   end

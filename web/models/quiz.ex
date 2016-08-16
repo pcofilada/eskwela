@@ -1,10 +1,11 @@
-defmodule Eskwela.Subject do
+defmodule Eskwela.Quiz do
   use Eskwela.Web, :model
 
-  schema "subjects" do
-    field :name, :string
+
+  schema "quizzes" do
+    field :status, :string
     belongs_to :level, Eskwela.Level
-    has_many :questions, Eskwela.Question
+    belongs_to :user, Eskwela.User
     has_many :quiz_questions, Eskwela.QuizQuestion
 
     timestamps()
@@ -15,7 +16,11 @@ defmodule Eskwela.Subject do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
+    |> cast(params, [:status, :user_id, :level_id])
+    |> validate_required([:status, :user_id])
+  end
+
+  def create_quiz_questions do
+
   end
 end

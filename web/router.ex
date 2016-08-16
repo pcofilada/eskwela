@@ -29,6 +29,11 @@ defmodule Eskwela.Router do
     end
     resources "/choices", ChoiceController
 
+    resources "/quizzes", QuizController do
+      get "/subject/:id", QuizController, :start, as: :start
+      patch "/subject/:id", QuizController, :submit, as: :submit
+    end
+
     get "/sign_up", RegistrationController, :new
     post "/sign_up", RegistrationController, :create
     get "/sign_in", SessionController, :new

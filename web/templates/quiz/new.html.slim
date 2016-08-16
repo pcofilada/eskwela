@@ -1,0 +1,18 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 New Quiz
+      .ibox-content
+        = form_for @changeset, quiz_path(@conn, :create), fn f ->
+          = if @changeset.action do
+            .alert.alert-danger
+              p Oops, something went wrong! Please check the errors below.
+          .form-group
+            = label f, :level_id, class: "control-label"
+            = select f, :level_id, @levels, class: "form-control"
+            = error_tag f, :level_id
+          .hr-line-dashed
+          .form-group.clearfix
+            = link "Cancel", to: quiz_path(@conn, :index), class: "btn btn-default col-xs-6"
+            = submit "Submit", class: "btn btn-success col-xs-6"

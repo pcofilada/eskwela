@@ -1,0 +1,23 @@
+.row
+  .col-lg-12
+    .ibox
+      .ibox-title
+        h4 Question List
+        .ibox-tools
+          = link "New quiz", to: quiz_path(@conn, :new), class: "btn btn-primary btn-sm"
+      .ibox-content
+        table.table
+          thead
+            tr
+              th #
+              th Level
+              th Status
+              th
+          tbody
+            = for quiz <- @quizzes do
+              tr
+                td= quiz.id
+                td= quiz.level.name
+                td= quiz.status
+                td.actions.text-right
+                  = link "Manage", to: quiz_path(@conn, :show, quiz), class: "btn btn-success btn-xs"
