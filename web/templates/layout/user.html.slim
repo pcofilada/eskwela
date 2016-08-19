@@ -19,4 +19,6 @@ html lang="en"
               = submit "Logout", class: "btn btn-white"
     main role="main"
       .container-fluid
+        .alert.alert-danger role="alert"= get_flash(@conn, :error)
+        .alert.alert-info role="alert"= get_flash(@conn, :info)
         = render @view_module, @view_template, assigns
