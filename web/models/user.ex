@@ -18,7 +18,9 @@ defmodule Eskwela.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:username, :first_name, :last_name, :password])
+    |> cast(params, [:username, :first_name, :last_name, :password, :role])
     |> validate_required([:username, :first_name, :last_name, :password])
+    |> update_change(:username, &String.downcase/1)
+    |> unique_constraint(:username)
   end
 end

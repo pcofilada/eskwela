@@ -2,6 +2,7 @@ defmodule Eskwela.SessionController do
   use Eskwela.Web, :controller
 
   plug :put_layout, "authentication.html"
+  plug :check_if_logged_in
 
   def new(conn, __params) do
     render(conn, "new.html")

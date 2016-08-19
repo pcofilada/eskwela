@@ -4,6 +4,7 @@ defmodule Eskwela.RegistrationController do
 
   plug :scrub_params, "user" when action in [:create]
   plug :put_layout, "authentication.html"
+  plug :check_if_logged_in
 
   def new(conn, __params) do
     changeset = User.changeset(%User{})

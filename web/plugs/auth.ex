@@ -23,6 +23,28 @@ defmodule Eskwela.Auth do
     |> repo.get_by(username: params["username"])
     |> authenticate(params["password"])
   end
+
+  def check_if_logged_in(conn, _) do
+    case conn.assigns[:current_user] do
+      nil ->
+        conn
+      _ ->
+        check_role(conn, conn.assigns[:current_user].role)
+    end
+  end
+
+  defp check_role(conn, role) do
+    case role do
+      "users" ->
+          conn
+          |> put_flash(:error, "You are already signedin.")
+          |> redirect(to: "/quizzes")
+      "admin" ->
+          conn
+          |> put_flash(:error, "You are already signedin.")
+          |> redirect(to: "/levels")
+    end
+  end
   
   defp assign_current_user(%Plug.Conn{assigns: %{current_user: %User{}}} = conn, _user_id), do: conn
   defp assign_current_user(conn, user_id) do

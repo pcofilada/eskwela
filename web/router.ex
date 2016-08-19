@@ -27,7 +27,6 @@ defmodule Eskwela.Router do
         patch "/set_answer", ChoiceController, :set_answer, as: :set_answer
       end
     end
-    resources "/choices", ChoiceController
 
     resources "/quizzes", QuizController do
       get "/subject/:id", QuizController, :start, as: :start

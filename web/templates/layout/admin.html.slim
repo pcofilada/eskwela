@@ -14,7 +14,7 @@ html lang="en"
       nav.navbar.navbar-default
         .container-fluid
           .navbar-header
-            = link "ESKWELA", to: quiz_path(@conn, :index), class: "navbar-brand"
+            = link "ESKWELA", to: level_path(@conn, :index), class: "navbar-brand"
     main role="main"
       .container-fluid
         = render @view_module, @view_template, assigns

@@ -1,7 +1,10 @@
 defmodule Eskwela.QuizController do
   use Eskwela.Web, :controller
+  import Eskwela.Redirect
 
   plug :put_layout, "user.html"
+  plug :user_logged_in?
+  plug :is_user?
 
   alias Eskwela.Quiz
   alias Eskwela.Level

@@ -1,7 +1,10 @@
 defmodule Eskwela.SubjectController do
   use Eskwela.Web, :controller
+  import Eskwela.Redirect
 
   plug :put_layout, "admin.html"
+  plug :user_logged_in?
+  plug :is_admin?
 
   alias Eskwela.Level
   alias Eskwela.Subject
