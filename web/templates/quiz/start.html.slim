@@ -17,7 +17,7 @@
                 .form-group.choices
                   = for choice <- Enum.shuffle(quiz_question.question.choices) do
                     .choice
-                      = radio_button f, :choice, choice.id, name: "quiz_question[#{quiz_question.id}][choice]"
+                      = radio_button f, :choice, choice.id, name: "quiz_question[#{quiz_question.id}][choice]", required: true
                       = label f, :choice, choice.item, for: "quiz_question_choice_#{choice.id}"
               .hr-line-dashed
             .form-group.row

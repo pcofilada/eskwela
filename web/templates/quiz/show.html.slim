@@ -13,7 +13,7 @@
               th Score
               th
           tbody
-            = for subject <- @quiz.level.subjects do
+            = for subject <- @subjects do
               tr
                 td= subject.name
                 td= quiz_score(@quiz, subject)

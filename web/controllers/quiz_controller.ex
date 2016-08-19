@@ -49,9 +49,15 @@ defmodule Eskwela.QuizController do
 
   def show(conn, %{"id" => id}) do
     quiz = Repo.get!(Quiz, id)
+    |> Repo.preload(:quiz_questions)
     |> Repo.preload([level: [subjects: [:quiz_questions] ]])
+    subject_query = from qq in QuizQuestion, where: qq.quiz_id == ^quiz.id, select: qq.subject_id
+    subject_ids = Repo.all(subject_query)
+    |> Enum.uniq()
+    subjects_query = from s in Subject, where: s.id in  ^subject_ids, select: s
+    subjects = Repo.all(subjects_query)
 
-    render(conn, "show.html", quiz: quiz)
+    render(conn, "show.html", quiz: quiz, subjects: subjects)
   end
   
   def start(conn, %{"quiz_id" => quiz_id, "id" => id}) do
@@ -100,6 +106,12 @@ defmodule Eskwela.QuizController do
           |> redirect(to: quiz_path(conn, :show, quiz))
       end
     end
+  end
+
+  def submit(conn, %{"quiz_id" => quiz_id}) do
+    conn
+    |> put_flash(:error, "You need to answer all questions.")
+    |> redirect(to: conn.request_path)
   end
 
   def preview(conn, %{"quiz_id" => quiz_id, "id" => id}) do
