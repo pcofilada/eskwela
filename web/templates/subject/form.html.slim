@@ -3,8 +3,7 @@
     .alert.alert-danger
       p Oops, something went wrong! Please check the errors below.
   .form-group
-    = label f, :name, class: "control-label"
-    = text_input f, :name, class: "form-control"
+    = text_input f, :name, class: "form-control single", placeholder: "Subject name"
     = error_tag f, :name
   .hr-line-dashed
   .form-group.clearfix

@@ -1,6 +1,8 @@
 defmodule Eskwela.QuizController do
   use Eskwela.Web, :controller
 
+  plug :put_layout, "user.html"
+
   alias Eskwela.Quiz
   alias Eskwela.Level
   alias Eskwela.Subject

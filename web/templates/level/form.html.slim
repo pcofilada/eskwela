@@ -3,10 +3,9 @@
     .alert.alert-danger
       p Oops, something went wrong! Please check the errors below.
   .form-group
-    = label f, :name, class: "control-label"
-    = text_input f, :name, class: "form-control", placeholder: "Enter level or grade name"
+    = text_input f, :name, class: "form-control single", placeholder: "Enter level or grade name"
     = error_tag f, :name
   .hr-line-dashed
   .form-group.clearfix
-    = link "Cancel", to: level_path(@conn, :index), class: "btn btn-default col-xs-6"
+    = link "Cancel", to: level_path(@conn, :index), class: "btn btn-white col-xs-6"
     = submit "Submit", class: "btn btn-success col-xs-6"

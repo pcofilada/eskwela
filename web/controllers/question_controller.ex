@@ -1,6 +1,8 @@
 defmodule Eskwela.QuestionController do
   use Eskwela.Web, :controller
 
+  plug :put_layout, "admin.html"
+
   alias Eskwela.Question
   alias Eskwela.Level
 

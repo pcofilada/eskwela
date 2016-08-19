@@ -1,6 +1,8 @@
 defmodule Eskwela.LevelController do
   use Eskwela.Web, :controller
 
+  plug :put_layout, "admin.html"
+
   alias Eskwela.Level
 
   def index(conn, _params) do

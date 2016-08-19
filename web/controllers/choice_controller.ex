@@ -1,6 +1,8 @@
 defmodule Eskwela.ChoiceController do
   use Eskwela.Web, :controller
 
+  plug :put_layout, "admin.html"
+
   alias Eskwela.Question
   alias Eskwela.Choice
 

@@ -1,6 +1,8 @@
 defmodule Eskwela.SubjectController do
   use Eskwela.Web, :controller
 
+  plug :put_layout, "admin.html"
+
   alias Eskwela.Level
   alias Eskwela.Subject
 

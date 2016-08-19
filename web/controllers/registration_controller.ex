@@ -3,6 +3,7 @@ defmodule Eskwela.RegistrationController do
   alias Eskwela.User
 
   plug :scrub_params, "user" when action in [:create]
+  plug :put_layout, "authentication.html"
 
   def new(conn, __params) do
     changeset = User.changeset(%User{})
