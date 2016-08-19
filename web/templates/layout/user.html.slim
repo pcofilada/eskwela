@@ -15,6 +15,8 @@ html lang="en"
         .container-fluid
           .navbar-header
             = link "ESKWELA", to: quiz_path(@conn, :index), class: "navbar-brand"
+            = form_for @conn, session_path(@conn, :delete), [method: :delete, as: :sign_out, class: "logout-form"], fn f ->
+              = submit "Logout", class: "btn btn-white"
     main role="main"
       .container-fluid
         = render @view_module, @view_template, assigns

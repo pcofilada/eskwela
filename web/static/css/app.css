@@ -96,6 +96,12 @@ span.help-block {
   border: 1px solid #e7eaec;
 }
 
+.logout-form {
+  margin: 0px;
+  padding: 7px 15px;
+  text-align: right;
+}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;
