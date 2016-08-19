@@ -11,7 +11,7 @@ defmodule Eskwela.SessionController do
         conn
         |> put_session(:user_id, user.id)
         |> put_flash(:info, "Signed In")
-        |> redirect(to: "/")
+        |> redirect(to: quiz_path(conn, :index))
       :error ->
         conn
         |> put_flash(:error, "Wrong email or password")

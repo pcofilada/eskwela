@@ -16,8 +16,9 @@ defmodule Eskwela.RegistrationController do
     case Eskwela.Auth.sign_up(changeset, Repo) do
       {:ok, changeset} ->
         conn
+        |> put_session(:user_id, changeset.id)
         |> put_flash(:info, "Account created")
-        |> redirect(to: "/")
+        |> redirect(to: quiz_path(conn, :index))
       {:error, changeset} ->
         conn
         |> render("new.html", changeset: changeset)
