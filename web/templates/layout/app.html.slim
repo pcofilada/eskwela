@@ -10,18 +10,16 @@ html lang="en"
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
 
   body
-    header
-      nav.navbar.navbar-default
-        .container-fluid
-          .navbar-header
-            button.navbar-toggle.collapsed aria-expanded="false" data-target="#main-menu" data-toggle="collapse" type="button"
-              span.sr-only Toggle Navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            = link "ESKWELA", to: "/", class: "navbar-brand"
+    /header
+      /nav.navbar.navbar-default
+        /.container-fluid
+          /.navbar-header
+            /button.navbar-toggle.collapsed aria-expanded="false" data-target="#main-menu" data-toggle="collapse" type="button"
+              /span.sr-only Toggle Navigation
+              /span.icon-bar
+              /span.icon-bar
+              /span.icon-bar
+            /= link "ESKWELA", to: "/", class: "navbar-brand"
     main role="main"
       .container-fluid
-        p.alert.alert-info role="alert"= get_flash(@conn, :info)
-        p.alert.alert-danger role="alert"= get_flash(@conn, :error)
         = render @view_module, @view_template, assigns

@@ -1,29 +1,24 @@
-h1 Create Account
-
-= form_for @changeset, registration_path(@conn, :create), fn f ->
-  = if f.errors != [] do
-    .alert.alert-danger
-      p Opps, something went wrong! Please check the errors below
-
-  .form-group
-    label First Name
-    = text_input f, :first_name, class: "form-control", placeholder: "First Name"
-    = error_tag f, :first_name
-
-  .form-group
-    label Last Name
-    = text_input f, :last_name, class: "form-control", placeholder: "Last Name"
-    = error_tag f, :last_name
-
-  .form-group
-    label Username
-    = text_input f, :username, class: "form-control", placeholder: "Username"
-    = error_tag f, :username
-
-  .form-group
-    label Password
-    = password_input f, :password, class: "form-control", placeholder: "Password"
-    = error_tag f, :password
-
-  .form-group
-    = submit "Create Account", class: "btn btn-primary"
+.registerscreen.middle-box
+  .ibox-content
+    h1.center Eskwela
+    p.center Registe. To see it in action.
+    = form_for @changeset, registration_path(@conn, :create), fn f ->
+      = if f.errors != [] do
+        .alert.alert-danger
+          p Opps, something went wrong! Please check the errors below
+      .form-group
+        = text_input f, :first_name, class: "form-control single", placeholder: "First Name"
+        = error_tag f, :first_name
+      .form-group
+        = text_input f, :last_name, class: "form-control single", placeholder: "Last Name"
+        = error_tag f, :last_name
+      .form-group
+        = text_input f, :username, class: "form-control single", placeholder: "Username"
+        = error_tag f, :username
+      .form-group
+        = password_input f, :password, class: "form-control single", placeholder: "Password"
+        = error_tag f, :password
+      button.btn.btn-primary.full-width.m-b Register
+      p.text-muted.center
+        small Do not have an account?
+      = link "Login", to: session_path(@conn, :new), class: "btn btn-sm btn-white btn-block"

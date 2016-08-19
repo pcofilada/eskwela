@@ -18,7 +18,7 @@ defmodule Eskwela.Router do
   scope "/", Eskwela do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", SessionController, :new
     resources "/levels", LevelController do
       resources "/subjects", SubjectController, except: [:index, :show]
     end

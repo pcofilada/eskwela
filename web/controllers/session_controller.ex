@@ -14,7 +14,7 @@ defmodule Eskwela.SessionController do
         |> redirect(to: "/")
       :error ->
         conn
-        |> put_flash(:info, "Wrong email or password")
+        |> put_flash(:error, "Wrong email or password")
         |> render("new.html")
     end
   end

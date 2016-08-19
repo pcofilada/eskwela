@@ -40,6 +40,62 @@ span.help-block {
   color: #ed5565;
 }
 
+.center {
+  text-align: center;
+}
+
+.form-control.single {
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid #e5e6e7;
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+  font-size: 14px;
+  box-shadow: none;
+}
+
+.form-control.single:focus {
+  border-color: #1ab394;
+}
+
+.text-muted {
+  color: #888888;
+}
+
+.m-b {
+  margin-bottom: 15px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: #1ab394;
+  border-color: #1ab394;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: #18a689;
+  border-color: #18a689;
+  color: #FFFFFF;
+}
+
+.btn {
+  border-radius: 3px;
+}
+
+.btn-white {
+  color: inherit;
+  background: white;
+  border: 1px solid #e7eaec;
+}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;
@@ -85,7 +141,7 @@ span.help-block {
   margin-left: 5px;
 }
 
-.ibox > .ibox-content {
+.ibox-content {
   clear: both;
   background-color: #ffffff;
   color: inherit;
@@ -94,4 +150,11 @@ span.help-block {
   border-image: none;
   border-style: solid solid none;
   border-width: 1px 0;
+}
+
+.middle-box {
+  max-width: 400px;
+  z-index: 100;
+  margin: 0 auto;
+  padding-top: 40px;
 }
