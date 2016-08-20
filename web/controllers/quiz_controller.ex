@@ -34,7 +34,7 @@ defmodule Eskwela.QuizController do
     user_id = get_session(conn, :user_id)
     levels = Repo.all(Level)
     |> Enum.map(&{&1.name, &1.id})
-    changeset = Quiz.changeset(%Quiz{status: "active", user_id: user_id}, quiz_params)
+    changeset = Quiz.changeset(%Quiz{status: "Active", user_id: user_id}, quiz_params)
 
     case Repo.insert(changeset) do
       {:ok, quiz} ->
@@ -97,6 +97,7 @@ defmodule Eskwela.QuizController do
 
       case Repo.update(changeset) do
         {:ok, quiz_question} ->
+          quiz_finished?(conn, quiz)
           conn
           |> put_flash(:info, "Quiz Finished.")
           |> redirect(to: quiz_path(conn, :show, quiz))
@@ -141,6 +142,18 @@ defmodule Eskwela.QuizController do
 
        Eskwela.Repo.insert(quiz_question)
      end
+    end
+  end
+
+  def quiz_finished?(conn, quiz) do
+    query = from qq in QuizQuestion, where: qq.quiz_id == ^quiz.id, select: qq.user_choice
+    user_choices = Repo.all(query)
+    case Enum.member?(user_choices, nil) do
+      true ->
+        conn
+      false ->
+        changeset = Quiz.changeset(quiz, %{status: "Completed"})
+        Repo.update(changeset)
     end
   end
 end
