@@ -164,3 +164,9 @@ span.help-block {
   margin: 0 auto;
   padding-top: 40px;
 }
+
+.choice label,
+.correct-answer span,
+.user-choice span {
+  margin-left: 5px;
+}
