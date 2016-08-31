@@ -102,6 +102,13 @@ span.help-block {
   text-align: right;
 }
 
+.placeholder {
+  font-size: 18px;
+  padding: 20px;
+  text-align: justify;
+  color: #a7a2a2;
+}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;

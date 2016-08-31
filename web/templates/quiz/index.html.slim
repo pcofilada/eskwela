@@ -2,22 +2,25 @@
   .col-lg-12
     .ibox
       .ibox-title
-        h4 Question List
+        h4 Quiz List
         .ibox-tools
           = link "New quiz", to: quiz_path(@conn, :new), class: "btn btn-primary btn-sm"
       .ibox-content
-        table.table
-          thead
-            tr
-              th #
-              th Level
-              th Status
-              th
-          tbody
-            = for quiz <- @quizzes do
+        = if Enum.empty?(@quizzes) do
+          .placeholder It seems that you are new on Eskwela. To get started click the button New quiz to generate your first set of quiz.
+        - else
+          table.table
+            thead
               tr
-                td= quiz.id
-                td= quiz.level.name
-                td= quiz.status
-                td.actions.text-right
-                  = link "Manage", to: quiz_path(@conn, :show, quiz), class: "btn btn-success btn-xs"
+                th #
+                th Level
+                th Status
+                th
+            tbody
+              = for quiz <- @quizzes do
+                tr
+                  td= quiz.id
+                  td= quiz.level.name
+                  td= quiz.status
+                  td.actions.text-right
+                    = link "Manage", to: quiz_path(@conn, :show, quiz), class: "btn btn-success btn-xs"
