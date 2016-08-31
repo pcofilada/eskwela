@@ -9,7 +9,7 @@
       .ibox-content
         h5 Questions
         .questions
-          = form_for @changeset, quiz_submit_path(@conn, :submit, @quiz, @subject), [method: :patch], fn f ->
+          = form_for @changeset, quiz_submit_path(@conn, :submit, @quiz, @subject), [method: :patch, id: "quiz-form" ], fn f ->
             = for quiz_question <- @quiz_questions do
               .question
                 .item
@@ -22,3 +22,9 @@
               .hr-line-dashed
             .form-group.row
               = submit "Submit", class: "btn btn-success col-xs-12"
+#timer
+  label Remaining Time:
+  .count-down
+    span.minutes
+    span.divider :
+    span.seconds

@@ -109,6 +109,26 @@ span.help-block {
   color: #a7a2a2;
 }
 
+#timer {
+  position: fixed;
+  bottom: 0px;
+  background: #ffffff;
+  width: 100%;
+  left: 0px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+#timer > label {
+  margin: 0px;
+}
+
+#timer > .count-down {
+  font-size: 30px;
+  padding-left: 10px;
+}
+
 .ibox {
   clear: both;
   margin-bottom: 25px;

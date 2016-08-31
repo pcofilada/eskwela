@@ -19,3 +19,40 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+var deadline = new Date(Date.parse(new Date()) + 20 * 60 * 1000);
+var timer = document.getElementById('timer')
+if (timer != null) {
+  initializeClock(timer, deadline);
+}
+
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  return {
+    'total': t,
+    'minutes': minutes,
+    'seconds': seconds
+  }
+}
+
+function initializeClock(timer, endtime) {
+  var minutes = timer.querySelector('.minutes');
+  var seconds = timer.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    minutes.innerHTML = ('0' + t.minutes).slice(-2);
+    seconds.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+      document.getElementById('quiz-form').submit();
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
