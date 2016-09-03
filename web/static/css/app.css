@@ -98,8 +98,16 @@ span.help-block {
 
 .logout-form {
   margin: 0px;
-  padding: 7px 15px;
-  text-align: right;
+}
+
+.links {
+  float: right;
+  margin: 8px 15px 8px 0px;
+}
+
+.links > * {
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .placeholder {

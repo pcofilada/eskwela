@@ -15,11 +15,27 @@ html lang="en"
         .container-fluid
           .navbar-header
             = link "ESKWELA", to: quiz_path(@conn, :index), class: "navbar-brand"
-            = form_for @conn, session_path(@conn, :delete), [method: :delete, as: :sign_out, class: "logout-form"], fn f ->
-              = submit "Logout", class: "btn btn-white"
+            .links
+              a#instruction-link href="#" Instructions
+              = form_for @conn, session_path(@conn, :delete), [method: :delete, as: :sign_out, class: "logout-form"], fn f ->
+                = submit "Logout", class: "btn btn-white"
     main role="main"
       .container-fluid
         .alert.alert-danger role="alert"= get_flash(@conn, :error)
         .alert.alert-info role="alert"= get_flash(@conn, :info)
         = render @view_module, @view_template, assigns
+    #instruction-modal.modal.bs-example-modal-sm aria-labelledby="instructionModal" role="dialog" tabindex="-1"
+      .modal-dialog role="document"
+        .modal-content
+          .modal-header
+            h4#instructionModal.modal-title Instructions
+          .modal-body
+            ol
+              li Click "New quiz" button to generate new set of quiz.
+              li If you already have set of quiz you can click "Manage" button to go to quiz proper.
+              li On the quiz page you can see all the subject, choose any subject you want to start and just click "Start" button when you are ready to take the quiz.
+              li On the quiz proper just choose the answer that you think it's the best answer for the question. When you are finish all the items just press "Submit" button. Note: You have only 20 mins to answer the all the questions.
+              li After finishing the exam you can see your score for that subject on the quiz page and also you can review your quiz and check if what's the correct answer by just clicking "Preview" button.
+          .modal-footer
+            button#close-modal.btn.btn-default.btn-danger data-dismiss="modal" type="button"  Close
     script src="#{static_path(@conn, "/js/app.js")}"

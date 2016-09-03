@@ -56,3 +56,14 @@ function initializeClock(timer, endtime) {
   updateClock();
   var timeinterval = setInterval(updateClock, 1000);
 }
+
+var link = document.getElementById('instruction-link');
+var modal = document.getElementById('instruction-modal');
+var close = document.getElementById('close-modal');
+
+function toggleModal() {
+  modal.classList.toggle('show');
+}
+
+link.addEventListener('click', toggleModal)
+close.addEventListener('click', toggleModal)
