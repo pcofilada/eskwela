@@ -38,8 +38,13 @@ defmodule Eskwela.QuizView do
   end
 
   def user_choice(choice) do
-    choice = Repo.get!(Choice, choice)
-    choice.item
+    case choice do
+      "0" ->
+        "No answer"
+      _ ->
+        choice = Repo.get!(Choice, choice)
+        choice.item
+    end
   end
 
   def correct_answer(question) do

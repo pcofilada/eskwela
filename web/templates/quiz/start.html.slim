@@ -15,6 +15,7 @@
                 .item
                   h5= quiz_question.question.item
                 .form-group.choices
+                  = hidden_input f, :choice, value: "0", name: "quiz_question[#{quiz_question.id}][choice]"
                   = for choice <- Enum.shuffle(quiz_question.question.choices) do
                     .choice
                       = radio_button f, :choice, choice.id, name: "quiz_question[#{quiz_question.id}][choice]", required: true
