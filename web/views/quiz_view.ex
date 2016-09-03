@@ -16,11 +16,13 @@ defmodule Eskwela.QuizView do
   end
 
   def quiz_score(quiz, subject) do
-    case List.first(quiz.quiz_questions).user_choice do
-      nil ->
+    query = from qq in QuizQuestion, where: qq.quiz_id == ^quiz.id, where: qq.subject_id == ^subject.id, select: qq.user_choice
+    user_choices = Repo.all(query)
+    case Enum.member?(user_choices, nil) do
+      true ->
         "Not yet started"
-      _ ->
-        "#{count_correct_answer(quiz.id, subject.id)} / #{Enum.count(quiz.quiz_questions)}"
+      false ->
+        "#{count_correct_answer(quiz.id, subject.id)} / 20"
     end
   end
 

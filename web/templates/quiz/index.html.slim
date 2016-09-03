@@ -12,14 +12,12 @@
           table.table
             thead
               tr
-                th #
                 th Level
                 th Status
                 th
             tbody
               = for quiz <- @quizzes do
                 tr
-                  td= quiz.id
                   td= quiz.level.name
                   td= quiz.status
                   td.actions.text-right
